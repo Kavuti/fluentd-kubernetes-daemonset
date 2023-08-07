@@ -19,6 +19,7 @@ X86_IMAGES := \
 	v1.16/debian-opensearch:v1.16.2-debian-opensearch-amd64-1.0,v1.16-debian-opensearch-amd64-1 \
 	v1.16/debian-loggly:v1.16.2-debian-loggly-amd64-1.0,v1.16-debian-loggly-amd64-1 \
 	v1.16/debian-logentries:v1.16.2-debian-logentries-amd64-1.0,v1.16-debian-logentries-amd64-1 \
+	v1.16/debian-insightops:v1.16.2-debian-insightops-amd64-1.0,v1.16-debian-insightops-amd64-1 \
 	v1.16/debian-cloudwatch:v1.16.2-debian-cloudwatch-amd64-1.0,v1.16-debian-cloudwatch-amd64-1 \
 	v1.16/debian-stackdriver:v1.16.2-debian-stackdriver-amd64-1.0,v1.16-debian-stackdriver-amd64-1 \
 	v1.16/debian-s3:v1.16.2-debian-s3-amd64-1.0,v1.16-debian-s3-amd64-1 \
@@ -42,6 +43,7 @@ ARM64_IMAGES := \
 	v1.16/arm64/debian-opensearch:v1.16.2-debian-opensearch-arm64-1.0,v1.16-debian-opensearch-arm64-1 \
 	v1.16/arm64/debian-loggly:v1.16.2-debian-loggly-arm64-1.0,v1.16-debian-loggly-arm64-1 \
 	v1.16/arm64/debian-logentries:v1.16.2-debian-logentries-arm64-1.0,v1.16-debian-logentries-arm64-1 \
+	v1.16/arm64/debian-insightops:v1.16.2-debian-insightops-arm64-1.0,v1.16-debian-insightops-arm64-1 \
 	v1.16/arm64/debian-cloudwatch:v1.16.2-debian-cloudwatch-arm64-1.0,v1.16-debian-cloudwatch-arm64-1 \
 	v1.16/arm64/debian-stackdriver:v1.16.2-debian-stackdriver-arm64-1.0,v1.16-debian-stackdriver-arm64-1 \
 	v1.16/arm64/debian-s3:v1.16.2-debian-s3-arm64-1.0,v1.16-debian-s3-arm64-1 \
@@ -195,6 +197,8 @@ dockerfile-all:
 #
 # Usage:
 #	make gemfile [DOCKERFILE=] [VERSION=]
+# For M1 Mac add the x86_64-linux platform instead of removing the x86_64-linux-musl
+
 gemfile:
 	make container-image-template FILE=Gemfile
 	docker run --rm -i -v $(PWD)/docker-image/$(DOCKERFILE)/Gemfile:/Gemfile:ro \
